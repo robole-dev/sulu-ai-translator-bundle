@@ -1,0 +1,4 @@
+services:
+    _defaults:
+        bind:
+            $deeplApiKey: "%env(DEEPL_API_KEY)%"

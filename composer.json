@@ -1,0 +1,22 @@
+{
+    "name": "robole/sulu-ai-translator-bundle",
+    "description": "Translate content using DeepL",
+    "type": "sulu-bundle",
+    "require": {
+        "php": "^8.0",
+        "sulu/sulu": "^2.5",
+        "deeplcom/deepl-php": "^1.7"
+    },
+    "license": "@todo",
+    "autoload": {
+        "psr-4": {
+            "Robole\\SuluAiTranslatorBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "falbroscheit",
+            "email": "felix.albroscheit@robole.de"
+        }
+    ]
+}
