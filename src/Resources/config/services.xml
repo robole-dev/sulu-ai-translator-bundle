@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ai_translator.admin"
+            class="Robole\SuluAiTranslatorBundle\Admin\AiTranslatorAdmin">
+            <argument type="service" id="sulu_admin.view_builder_factory" />
+            <argument type="service" id="sulu_security.security_checker" />
+            <argument>%sulu_admin.name%</argument>
+
+            <tag name="sulu.admin" />
+            <tag name="sulu.context" context="admin" />
+        </service>
+
+        <service id="ai_translator.deepl_service"
+            class="Robole\SuluAiTranslatorBundle\Service\DeeplService" public="true">
+            <argument key="$deeplApiKey">%env(DEEPL_API_KEY)%</argument>
+        </service>
+    </services>
+</container>

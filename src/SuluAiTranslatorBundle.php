@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * @todo This file is part of Sulu.
  *
@@ -9,16 +11,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Robole\SuluAiTranslatorBundle
+namespace Robole\SuluAiTranslatorBundle;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class SuluAiTranslatorBundle extends Bundle
 {
-    public function build(ContainerBuilder $container): void
-    {
-        parent::build($container);
-    }
 }
-
