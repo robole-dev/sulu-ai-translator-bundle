@@ -54,7 +54,7 @@ import "sulu-ai-translator-bundle";
 5. Install all npm dependencies and build the admin UI ([see all options](https://docs.sulu.io/en/2.5/cookbook/build-admin-frontend.html)):
 
 ```bash
-cd /assets/admin
+cd assets/admin
 npm install
 npm run build
 ```
@@ -81,7 +81,7 @@ DEEPL_API_KEY="..."
     "repositories": [
         {
             "type": "path",
-            "url": "./../../../SuluAITranslatorBundle"
+            "url": "./../../../local-path-to-bundle"
         }
     ],
 ```

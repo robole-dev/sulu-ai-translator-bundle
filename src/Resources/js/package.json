@@ -1,6 +1,6 @@
 {
   "name": "sulu-ai-translator-bundle",
-  "license": "@todo",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
@@ -9,12 +9,8 @@
     "classnames": "^2.2.5",
     "mobx": "^4.0.0",
     "mobx-react": "^5.0.0",
-    "react": "^16.2.0 || ^17.0.0",
+    "react": "^17.0.0",
     "sulu-admin-bundle": "*",
     "sulu-page-bundle": "*"
-  },
-  "engines": {
-    "node": ">=14",
-    "npm": ">=6 <7"
   }
 }

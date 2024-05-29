@@ -15,8 +15,8 @@
     "symfony/security-core": "^6.3",
     "deeplcom/deepl-php": "^1.7"
   },
-  "homepage": "https://@todo",
-  "license": "@todo",
+  "homepage": "https://github.com/robole-dev/sulu-ai-translator-bundle",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Robole\\SuluAiTranslatorBundle\\": "src/"
