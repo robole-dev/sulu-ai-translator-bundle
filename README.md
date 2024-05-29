@@ -1,8 +1,8 @@
-## SuluAITranslatorBundle
+# AITranslatorBundle
 
-**Integrates DeepL API for bulk and single translations of content fields (pages, snippets, forms).** This bundle is in alpha-stage and should be treated as such.
+**Sulu bundle that integrates DeepL API for bulk and single translations of content fields (pages, snippets, forms).** This bundle is in alpha-stage and should be treated as such.
 
-SuluAITranslatorBundle features:
+AITranslatorBundle features:
 
 - DeeplService to fetch translations and usage statistics from DeepL API
 - Usage statistics admin view
@@ -10,9 +10,9 @@ SuluAITranslatorBundle features:
 - Toolbar button to bulk translate all fields
 - Permissions for using and administrating the bundle
 
-### Installation
+## Installation
 
-Make sure to have installed [Node 14](https://nodejs.org/en/) for building the Sulu administration UI.
+Make sure to have installed [Node 18](https://nodejs.org/en/) (or Node 14 for Sulu versions <2.6.0) for building the Sulu administration UI.
 
 1. Open a command console, enter your project directory and execute:
 
@@ -67,11 +67,27 @@ DEEPL_API_KEY="..."
 
 (7. @todo Grant permissions in Sulu backend)
 
-### Details
+## Details
 
 - Currently supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
 - Translations are applied on the frontend, giving content creators the ability to check translation quality first and undo changes
 - Most of the frontend code uses React and is Sulu-compatible. Some actions, however, rely on `document.querySelector`
+
+### Local development
+
+1. Add to `repositories` section of `composer.json`:
+
+```json
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./../../../SuluAITranslatorBundle"
+        }
+    ],
+```
+
+2. Install bundle:
+   > composer require robole/sulu-ai-translator-bundle:@dev
 
 ### Troubleshooting
 

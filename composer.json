@@ -3,7 +3,6 @@
   "description": "Translate any type of content using DeepL",
   "type": "symfony-bundle",
   "require": {
-    "jackalope/jackalope-doctrine-dbal": "^1.7",
     "php": "^8.2",
     "sulu/sulu": "^2.5",
     "symfony/config": "^6.2",
