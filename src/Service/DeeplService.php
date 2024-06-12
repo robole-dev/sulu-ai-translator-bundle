@@ -1,6 +1,6 @@
 <?php
 
-namespace Robole\SuluAiTranslatorBundle\Service;
+namespace Robole\SuluAITranslatorBundle\Service;
 
 use DeepL\Translator;
 

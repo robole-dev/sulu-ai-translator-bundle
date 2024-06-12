@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Robole\SuluAiTranslatorBundle\Admin;
+namespace Robole\SuluAITranslatorBundle\Admin;
 
 use Sulu\Bundle\AdminBundle\Admin\Admin;
 use Sulu\Bundle\AdminBundle\Admin\Navigation\NavigationItem;
@@ -19,7 +19,7 @@ use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
  * - Adds link to settings navigation tab
  * - Connects route with TranslatorConfigView.js 
  */
-class AiTranslatorAdmin extends Admin
+class AITranslatorAdmin extends Admin
 {
     public const SECURITY_CONTEXT = 'sulu.module.ai_translator';
 
@@ -39,7 +39,7 @@ class AiTranslatorAdmin extends Admin
 
     public function configureNavigationItems(NavigationItemCollection $navigationItemCollection): void
     {
-        if ($this->securityChecker->hasPermission(AiTranslatorAdmin::SECURITY_CONTEXT, PermissionTypes::VIEW)) {
+        if ($this->securityChecker->hasPermission(AITranslatorAdmin::SECURITY_CONTEXT, PermissionTypes::VIEW)) {
             $AITranslatorAdminNavigationItem = new NavigationItem('app.translator_config_headline');
             $AITranslatorAdminNavigationItem->setPosition(999);
             $AITranslatorAdminNavigationItem->setView(self::TRANSLATION_CONFIG_VIEW);
@@ -50,7 +50,7 @@ class AiTranslatorAdmin extends Admin
 
     public function configureViews(ViewCollection $viewCollection): void
     {
-        if ($this->securityChecker->hasPermission(AiTranslatorAdmin::SECURITY_CONTEXT, PermissionTypes::VIEW)) {
+        if ($this->securityChecker->hasPermission(AITranslatorAdmin::SECURITY_CONTEXT, PermissionTypes::VIEW)) {
             $viewCollection->add(
                 $this->viewBuilderFactory->createViewBuilder(self::TRANSLATION_CONFIG_VIEW, '/translation', self::TRANSLATION_CONFIG_VIEW)
             );
@@ -65,7 +65,7 @@ class AiTranslatorAdmin extends Admin
             ]);
         }
 
-        // Attach translator toolbar to page form edit form
+        // Attach translator toolbar to sulu-form edit form
         if ($viewCollection->has('sulu_form.edit_form.details')) {
             /** @var FormViewBuilderInterface $formEditFormViewBuilder */
             $formEditFormViewBuilder = $viewCollection->get('sulu_form.edit_form.details');
@@ -88,7 +88,7 @@ class AiTranslatorAdmin extends Admin
     {
         return [
             self::SULU_ADMIN_SECURITY_SYSTEM => [
-                'AI Translator' => [
+                'AI Translator Usage Statistics' => [
                     self::SECURITY_CONTEXT => [
                         PermissionTypes::VIEW,
                     ],

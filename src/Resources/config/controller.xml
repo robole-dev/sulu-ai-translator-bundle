@@ -5,7 +5,7 @@
 
     <services>
 
-        <service id="Robole\SuluAiTranslatorBundle\Controller\Admin\TranslationController"
+        <service id="Robole\SuluAITranslatorBundle\Controller\Admin\TranslationController"
             public="true">
             <argument type="service" id="ai_translator.deepl_service" />
             <argument type="service" id="fos_rest.view_handler.default" />

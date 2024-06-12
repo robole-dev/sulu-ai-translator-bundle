@@ -2,16 +2,7 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Sulu.
- *
- * (c) Sulu GmbH
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
-namespace Robole\SuluAiTranslatorBundle\DependencyInjection;
+namespace Robole\SuluAITranslatorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 /**
  * This is the class that loads and manages article bundle configuration.
  */
-class SuluAiTranslatorExtension extends Extension
+class SuluAITranslatorExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Robole\SuluAiTranslatorBundle\Controller\Admin;
+namespace Robole\SuluAITranslatorBundle\Controller\Admin;
 
-use Robole\SuluAiTranslatorBundle\Service\DeeplService;
+use Robole\SuluAITranslatorBundle\Service\DeeplService;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

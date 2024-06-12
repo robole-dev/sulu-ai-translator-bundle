@@ -1,7 +1,7 @@
 app_translation_api:
-  type: rest
-  prefix: /admin/api
-  resource: Robole\SuluAiTranslatorBundle\Controller\Admin\TranslationController
-  name_prefix: app.
-  options:
-    expose: true
+    type: rest
+    prefix: /admin/api
+    resource: Robole\SuluAITranslatorBundle\Controller\Admin\TranslationController
+    name_prefix: app.
+    options:
+        expose: true

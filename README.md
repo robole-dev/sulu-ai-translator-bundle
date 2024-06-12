@@ -1,20 +1,21 @@
 # AITranslatorBundle
 
-**Sulu bundle that integrates DeepL API for bulk and single translations of content fields (pages, snippets, forms).** This bundle is in alpha-stage and should be treated as such.
+**Sulu bundle that integrates DeepL API for bulk and single translations of content fields.**
 
 AITranslatorBundle features:
 
 -   DeepLService to fetch translations and usage statistics from DeepL API
--   Usage statistics admin view
+-   "Usage statistics" admin view with permission
 -   Translation button next to input fields
--   Toolbar button to bulk translate all fields
--   Permissions for using and administrating the bundle
+-   Toolbar button to bulk translate all fields (currently only for pages, snippets and forms)
+
+More features coming soon (see below)!
 
 ## Installation
 
-Make sure to have installed [Node 18](https://nodejs.org/en/) (or Node 14 for Sulu versions <2.6.0) for building the Sulu administration UI.
+This bundle requires PHP 8.2. Make sure to have installed [Node 18](https://nodejs.org/en/) (or Node 14 for Sulu versions <2.6.0) for building the Sulu administration UI.
 
-1. Open a command console, enter your project directory and execute:
+1. Open a command console, enter your project directory and run:
 
 ```console
 composer require robole/sulu-ai-translator-bundle
@@ -25,22 +26,21 @@ If you're **not** using Symfony Flex, you'll also need to add the bundle in your
 ```php
 return [
     //...
-    Robole\SuluAiTranslatorBundle\SuluAiTranslatorBundle::class => ['all' => true],
+    Robole\SuluAITranslatorBundle\SuluAITranslatorBundle::class => ['all' => true],
 ];
 ```
 
 2. Register the new routes by adding the following to your `routes_admin.yaml`:
 
 ```yaml
-SuluAiTranslatorBundle:
-    resource: "@SuluAiTranslatorBundle/Resources/config/routes_admin.yml"
+SuluAITranslatorBundle:
+    resource: "@SuluAITranslatorBundle/Resources/config/routes_admin.yml"
 ```
 
 3. Reference the frontend code by adding the following to your `assets/admin/package.json`:
 
 ```json
 "dependencies": {
-    // ...
     "sulu-ai-translator-bundle": "file:../../vendor/robole/sulu-ai-translator-bundle/src/Resources/js"
 }
 ```
@@ -65,13 +65,13 @@ npm run build
 DEEPL_API_KEY="..."
 ```
 
-(7. @todo Grant permissions in Sulu backend)
+7. Grant permissions in Sulu backend to access "DeepL Usage Statistics" view.
 
-## Details
+## Limitations
 
--   Currently supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
--   Translations are applied on the frontend, giving content creators the ability to check translation quality first and undo changes
--   Most of the frontend code uses React and is Sulu-compatible. Some actions, however, rely on `document.querySelector`
+-   Currently only supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
+-   Translations are applied on the frontend, giving content creators the ability to check translation quality and undo changes
+-   Links to internal pages have to be updated by hand
 
 ### Local development
 
@@ -81,7 +81,7 @@ DEEPL_API_KEY="..."
     "repositories": [
         {
             "type": "path",
-            "url": "./../../../local-path-to-bundle"
+            "url": "./../local-path-to-bundle"
         }
     ],
 ```
@@ -94,8 +94,11 @@ DEEPL_API_KEY="..."
 
 If a translation request fails, make sure that the `source` and `target` language keys are [supported by DeepL](https://developers.deepl.com/docs/resources/supported-languages#target-languages). If not, extend `TranslationController->getLanguageKey()`.
 
-### Ideas for a RC
+### Ideas for next major version
 
--   Find a less verbose way to wrap sulu core input components and toggle blocks.
--   Enable configuration of translation strictness (e.g. formal, informal, etc.)
--   Add a dropdown on translation button (see wireframe) to precisely define source and target language
+-   Provide configuration parameter for mapping custom locale codes to DeepL target language code.
+-   Add Symfony Recipe for quicker installation of bundle.
+-   Replace `document.querySelector` with store-based approach for toggling blocks.
+-   Find a less verbose way to wrap sulu core input components with AI-translate-button.
+-   Enable configuration of translation strictness for each language (e.g. formal, informal, etc.)
+-   Add a dropdown popup next to translation button for overwriting source and target language of a field
