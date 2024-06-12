@@ -2,6 +2,8 @@
 
 **Sulu bundle that integrates DeepL API for bulk and single translations of content fields.**
 
+![Demonstration of content field translation](https://github.com/robole-dev/sulu-ai-translator-bundle/blob/main/demo.gif)
+
 AITranslatorBundle features:
 
 -   DeepLService to fetch translations and usage statistics from DeepL API
