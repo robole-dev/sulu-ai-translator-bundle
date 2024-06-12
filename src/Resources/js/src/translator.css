@@ -23,14 +23,13 @@ textarea[disabled],
     z-index: 99;
 }
 
-.translator__container .ck-content ~ .translator__btn,
-.translator__container textarea ~ .translator__btn {
+.translator__container .ck ~ .translator__btn {
     position: absolute;
-    top: 3px;
+    top: 57px;
     right: 3px;
 }
 
-.translator__container .ck-content ~ .translator__undo-btn,
+.translator__container .ck ~ .translator__undo-btn,
 .translator__container textarea ~ .translator__undo-btn {
     right: 30px;
 }
@@ -39,7 +38,7 @@ textarea[disabled],
     position: absolute;
     background-color: #52b6ca;
     right: 3px;
-    bottom: 3px;
+    top: 3px;
     border: none;
     width: 24px;
     height: 24px;
