@@ -21,7 +21,7 @@ use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
  */
 class AiTranslatorAdmin extends Admin
 {
-    public const SECURITY_CONTEXT = 'sulu.contact.people'; // @todo Add permissions: 'ai_translator';
+    public const SECURITY_CONTEXT = 'sulu.module.ai_translator';
 
     // Key of TranslatorConfigView.js as registered in app.js
     public const TRANSLATION_CONFIG_VIEW = 'ai_translator.config';
@@ -82,6 +82,19 @@ class AiTranslatorAdmin extends Admin
                 new ToolbarAction('ai_translator.toolbar', ['allow_overwrite' => true]),
             ]);
         }
+    }
+
+    public function getSecurityContexts()
+    {
+        return [
+            self::SULU_ADMIN_SECURITY_SYSTEM => [
+                'AI Translator' => [
+                    self::SECURITY_CONTEXT => [
+                        PermissionTypes::VIEW,
+                    ],
+                ],
+            ],
+        ];
     }
 
     public static function getPriority(): int

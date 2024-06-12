@@ -29,8 +29,6 @@ class TranslationController extends AbstractController
         switch ($language) {
             case "en":
                 return "en-GB";
-            case "cz":
-                return "cs";
             default:
                 return $language;
         }

@@ -4,11 +4,11 @@
 
 AITranslatorBundle features:
 
-- DeeplService to fetch translations and usage statistics from DeepL API
-- Usage statistics admin view
-- Translation button next to input fields
-- Toolbar button to bulk translate all fields
-- Permissions for using and administrating the bundle
+-   DeepLService to fetch translations and usage statistics from DeepL API
+-   Usage statistics admin view
+-   Translation button next to input fields
+-   Toolbar button to bulk translate all fields
+-   Permissions for using and administrating the bundle
 
 ## Installation
 
@@ -33,7 +33,7 @@ return [
 
 ```yaml
 SuluAiTranslatorBundle:
-  resource: "@SuluAiTranslatorBundle/Resources/config/routes_admin.yml"
+    resource: "@SuluAiTranslatorBundle/Resources/config/routes_admin.yml"
 ```
 
 3. Reference the frontend code by adding the following to your `assets/admin/package.json`:
@@ -69,9 +69,9 @@ DEEPL_API_KEY="..."
 
 ## Details
 
-- Currently supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
-- Translations are applied on the frontend, giving content creators the ability to check translation quality first and undo changes
-- Most of the frontend code uses React and is Sulu-compatible. Some actions, however, rely on `document.querySelector`
+-   Currently supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
+-   Translations are applied on the frontend, giving content creators the ability to check translation quality first and undo changes
+-   Most of the frontend code uses React and is Sulu-compatible. Some actions, however, rely on `document.querySelector`
 
 ### Local development
 
@@ -87,7 +87,8 @@ DEEPL_API_KEY="..."
 ```
 
 2. Install bundle:
-   > composer require robole/sulu-ai-translator-bundle:@dev
+
+> composer require robole/sulu-ai-translator-bundle:@dev
 
 ### Troubleshooting
 
@@ -95,7 +96,6 @@ If a translation request fails, make sure that the `source` and `target` languag
 
 ### Ideas for a RC
 
-- LICENSE
-- Find a less verbose way to wrap sulu core input components and toggle blocks.
-- Enable configuration of translation strictness (e.g. formal, informal, etc.)
-- Add a dropdown on translation button (see wireframe) to precisely define source and target language
+-   Find a less verbose way to wrap sulu core input components and toggle blocks.
+-   Enable configuration of translation strictness (e.g. formal, informal, etc.)
+-   Add a dropdown on translation button (see wireframe) to precisely define source and target language

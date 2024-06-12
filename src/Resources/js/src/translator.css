@@ -61,10 +61,11 @@ textarea[disabled],
 .translator__btn--checked {
     background-color: #6ac86b;
     opacity: 1;
+    pointer-events: none;
 }
 
 .translator__undo-btn {
-    background-color: #DCDCDC;
+    background-color: #dcdcdc;
     right: 30px;
 }
 
