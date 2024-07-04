@@ -104,9 +104,15 @@ DEEPL_API_KEY="..."
 
 If a translation request returns the input text, it is very likely that the language key(s) defined in your `locale_mapping` bundle configuration are not [supported by DeepL](https://developers.deepl.com/docs/resources/supported-languages#target-languages). This will be indicated in the response object.
 
-### Ideas for next major version
+### Ideas for next versions
 
 -   Add Symfony Recipe for quicker installation of bundle.
 -   Replace `document.querySelector` with store-based approach for toggling blocks.
 -   Enable configuration of translation strictness for each language (e.g. formal, informal, etc.)
 -   Add a dropdown popup next to translation button for overwriting source and target language of a field
+
+### Disclaimer
+
+This bundle uses the DeepL API to provide translation services. This project is not affiliated, associated, authorized, endorsed by, or in any way officially connected with [DeepL SE](https://www.deepl.com) or any of its subsidiaries or affiliates. The use of the DeepL API in this bundle is purely for functionality purposes and does not imply any relationship with the DeepL company.
+
+DeepL is a registered trademark of DeepL SE.
