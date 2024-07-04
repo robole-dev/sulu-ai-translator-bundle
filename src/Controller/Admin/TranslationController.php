@@ -16,22 +16,18 @@ class TranslationController extends AbstractController
     public function __construct(
         private DeeplService $deeplService,
         private ViewHandlerInterface $viewHandler,
+        private array $localeMapping
     ) {
     }
 
     /**
-     * Returns ISO 3166-1 compatible language key
+     * Returns ISO 3166-1 compatible language key from bundle configuration
      * 
      * @see https://developers.deepl.com/docs/resources/supported-languages#target-languages
      */
     private function getLanguageKey(?string $language): ?string
     {
-        switch ($language) {
-            case "en":
-                return "en-GB";
-            default:
-                return $language;
-        }
+        return $this->localeMapping[$language] ?? null;
     }
 
     /**
@@ -71,8 +67,9 @@ class TranslationController extends AbstractController
 
         if (!$target) {
             return new JsonResponse([
+                "translation" => $text,
                 "error" => "Translation failed: Target language not set"
-            ], 400);
+            ]);
         }
 
 

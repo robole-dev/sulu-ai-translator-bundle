@@ -9,6 +9,7 @@
             public="true">
             <argument type="service" id="ai_translator.deepl_service" />
             <argument type="service" id="fos_rest.view_handler.default" />
+            <argument>%sulu_ai_translator.locale_mapping%</argument>
 
             <tag name="sulu.context" context="admin" />
             <tag name="controller.service_arguments" />

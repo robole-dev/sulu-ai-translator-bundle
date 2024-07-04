@@ -16,7 +16,7 @@
 
         <service id="ai_translator.deepl_service"
             class="Robole\SuluAITranslatorBundle\Service\DeeplService" public="true">
-            <argument key="$deeplApiKey">%env(DEEPL_API_KEY)%</argument>
+            <argument>%sulu_ai_translator.deepl_api_key%</argument>
         </service>
     </services>
 </container>
