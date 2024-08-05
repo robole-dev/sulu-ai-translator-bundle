@@ -1,4 +1,3 @@
-// @flow
 import { observable, action } from "mobx";
 
 class AITranslatorQueueStore {

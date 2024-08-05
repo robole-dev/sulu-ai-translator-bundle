@@ -23,8 +23,6 @@ class AITranslatorConfig extends React.Component {
   }
 
   @computed get usagePercentage() {
-    console.log("computing", this.characterCount);
-
     if (this.characterCount === 0) {
       return 0;
     }
