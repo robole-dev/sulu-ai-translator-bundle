@@ -17,7 +17,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('deepl_api_key')
-                    ->isRequired()
                     ->end()
                 ->arrayNode('locale_mapping')
                     ->useAttributeAsKey('name')
