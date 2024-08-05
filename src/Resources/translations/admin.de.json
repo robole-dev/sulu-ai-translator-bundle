@@ -1,13 +1,12 @@
 {
-    "app.form.dynamic.types.grid_start": "Beginn Felder Grid",
-    "app.form.dynamic.types.grid_end": "Ende Felder Grid",
     "app.translation_config": "DeepL Übersetzer",
     "app.translator_config_headline": "DeepL Verbrauchsstatistik",
     "app.translator_config_usage_statistics": "{characterCount} von monatlich max. {characterLimit} Zeichen genutzt.",
     "app.translator_config_deepl_dashboard": "DeepL-Konto verwalten",
     "app.translator_refresh_statistics": "Verbrauchsstatistik aktualisieren",
     "app.translator_bulk_translate": "Übersetzen",
-    "app.translator_bulk_translate_confirm": "Diese Aktion übersetzt alle Felder in die Zielsprache. Dieser Prozess kann bei umfangreichen Inhalten eine längere Zeit in Anspruch nehmen. Möchten Sie fortfahren?",
+    "app.translator_bulk_translate_dialog_title": "Alle Felder übersetzen?",
+    "app.translator_bulk_translate_dialog_text": "Diese Aktion übersetzt alle Felder in die Zielsprache. Dies kann bei umfangreichen Inhalten eine längere Zeit in Anspruch nehmen. Möchten Sie fortfahren?",
     "app.translator_error": "Übersetzung konnte nicht geladen werden. Bitte prüfen Sie die Internetverbindung und versuchen Sie es erneut.",
     "app.translator_translate": "Klicken, um Feld in Zielsprache zu übersetzen",
     "app.translator_undo_translation": "Klicken, um Übersetzung des Feldes rückgängig zu machen"

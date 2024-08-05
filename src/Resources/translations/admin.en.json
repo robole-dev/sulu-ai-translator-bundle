@@ -1,13 +1,12 @@
 {
-    "app.form.dynamic.types.grid_start": "Start fields grid",
-    "app.form.dynamic.types.grid_end": "End fields grid",
     "app.translation_config": "DeepL Translator",
     "app.translator_config_headline": "DeepL Usage Statistics",
     "app.translator_config_usage_statistics": "{characterCount} out of a maximum monthly {characterLimit} characters used.",
     "app.translator_config_deepl_dashboard": "Manage DeepL Account",
     "app.translator_refresh_statistics": "Refresh Usage Statistics",
     "app.translator_bulk_translate": "Translate",
-    "app.translator_bulk_translate_confirm": "This action will translate all fields into the target language. This process may take a long time for extensive content. Would you like to continue?",
+    "app.translator_bulk_translate_dialog_title": "Translate all fields?",
+    "app.translator_bulk_translate_dialog_text": "This action will translate all fields into the target language. This process may take a long time for extensive content. Would you like to continue?",
     "app.translator_error": "Translation could not be loaded. Please check your internet connection and try again.",
     "app.translator_translate": "Click to translate field into target language",
     "app.translator_undo_translation": "Click to undo translation of the field"

@@ -1,0 +1,13 @@
+{
+    "app.translation_config": "Traducteur DeepL",
+    "app.translator_config_headline": "Statistiques de consommation DeepL",
+    "app.translator_config_usage_statistics": "{characterCount} sur {characterLimit} caractères maximum utilisés par mois.",
+    "app.translator_config_deepl_dashboard": "Gérer le compte DeepL",
+    "app.translator_refresh_statistics": "Actualiser les statistiques de consommation",
+    "app.translator_bulk_translate": "Traduire",
+    "app.translator_bulk_translate_dialog_title": "Traduire tous les champs?",
+    "app.translator_bulk_translate_dialog_text": "Cette action traduira tous les champs dans la langue cible. Cela peut prendre un certain temps pour des contenus volumineux. Voulez-vous continuer?",
+    "app.translator_error": "La traduction n'a pas pu être chargée. Veuillez vérifier la connexion Internet et réessayer.",
+    "app.translator_translate": "Cliquez pour traduire le champ dans la langue cible",
+    "app.translator_undo_translation": "Cliquez pour annuler la traduction du champ"
+}
