@@ -23,6 +23,12 @@ class AITranslatorConfig extends React.Component {
   }
 
   @computed get usagePercentage() {
+    console.log("computing", this.characterCount);
+
+    if (this.characterCount === 0) {
+      return 0;
+    }
+
     if (this.characterCount && this.characterLimit) {
       return parseInt((this.characterCount / this.characterLimit) * 100);
     }
@@ -38,7 +44,7 @@ class AITranslatorConfig extends React.Component {
     return Requester.get("/admin/api/translate/usage")
       .then(
         action((response) => {
-          if (response.character_count && response.character_limit) {
+          if (typeof response.character_count !== "undefined" && typeof response.character_limit !== "undefined") {
             this.characterCount = response.character_count;
             this.characterLimit = response.character_limit;
           }
@@ -66,7 +72,7 @@ class AITranslatorConfig extends React.Component {
     return (
       <div>
         <h1>{translate("app.translator_config_headline")}</h1>
-        {this.usagePercentage && (
+        {!isNaN(this.usagePercentage) && (
           <CircularProgressbar percentage={this.usagePercentage} size={200} />
         )}
         <div style={{ marginTop: 20, marginBottom: 20 }}>
