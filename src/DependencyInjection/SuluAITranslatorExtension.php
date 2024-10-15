@@ -19,8 +19,8 @@ class SuluAITranslatorExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('sulu_ai_translator.deepl_api_key', $config['deepl_api_key']);
-        $container->setParameter('sulu_ai_translator.locale_mapping', $config['locale_mapping']);
+        $container->setParameter('sulu_ai_translator.deepl_api_key', $config['deepl_api_key'] ?? "");
+        $container->setParameter('sulu_ai_translator.locale_mapping', $config['locale_mapping'] ?? []);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
