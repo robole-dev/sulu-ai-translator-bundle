@@ -1,0 +1,13 @@
+{
+    "app.translation_config": "DeepL Translator",
+    "app.translator_config_headline": "DeepL gebruiksstatistieken",
+    "app.translator_config_usage_statistics": "{characterCount} van het maximale maandelijkse aantal van {characterLimit} tekens dat wordt gebruikt.",
+    "app.translator_config_deepl_dashboard": "Beheer DeepL-account",
+    "app.translator_refresh_statistics": "Gebruiksstatistieken vernieuwen",
+    "app.translator_bulk_translate": "Vertaal",
+    "app.translator_bulk_translate_dialog_title": "Alle velden vertalen?",
+    "app.translator_bulk_translate_dialog_text": "Deze actie vertaalt alle velden naar de doeltaal. Bij uitgebreide inhoud kan dit proces lang duren. Wilt u doorgaan?",
+    "app.translator_error": "De vertaling kon niet worden geladen. Controleer uw internetverbinding en probeer het opnieuw.",
+    "app.translator_translate": "Klik om het veld naar de doeltaal te vertalen",
+    "app.translator_undo_translation": "Klik om de vertaling van het veld ongedaan te maken"
+}
