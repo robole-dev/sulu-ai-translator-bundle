@@ -1,10 +1,17 @@
-# AITranslatorBundle
+<div align="center">
+    <img src="icon.svg">
+    <h1>SuluAITranslatorBundle</h1>
+    <blockquote>
+        <p dir="auto">Sulu bundle that integrates DeepL API for bulk and single translations of content fields.</p>
+    </blockquote>
+</div>
 
-**Sulu bundle that integrates DeepL API for bulk and single translations of content fields.**
+![GitHub release](https://flat.badgen.net/github/release/robole-dev/sulu-ai-translator-bundle)
+![Supports Sulu 2.6 or later](https://flat.badgen.net/badge/Sulu/2.6/52B5C9?icon=php)
 
-![Demonstration of content field translation](https://github.com/robole-dev/sulu-ai-translator-bundle/blob/main/demo.gif)
+![Demonstration of content field translation](demo.gif)
 
-AITranslatorBundle features:
+## Features
 
 -   DeepLService to fetch translations and usage statistics from DeepL API
 -   "Usage statistics" admin view with permission
@@ -38,14 +45,15 @@ SuluAITranslatorBundle:
 ```
 
 3. Add the file `config/packages/sulu_ai_translator.yaml` with the following configuration:
+
 ```yaml
 sulu_ai_translator:
     deepl_api_key: "%env(DEEPL_API_KEY)%"
     locale_mapping:
         en: "en-GB"
 ```
-Via `locale_mapping` you can map a locale key from your webspace to the according [official DeepL target language](https://developers.deepl.com/docs/resources/supported-languages#target-languages). Use value `null` for languages that should not be translatable.
 
+Via `locale_mapping` you can map a locale key from your webspace to the according [official DeepL target language](https://developers.deepl.com/docs/resources/supported-languages#target-languages). Use value `null` for languages that should not be translatable.
 
 4. Reference the frontend code by adding the following to your `assets/admin/package.json`:
 

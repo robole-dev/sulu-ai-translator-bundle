@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="147.12" height="150" version="1.1" viewBox="0 0 147.12 150" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style>.a{fill:#fff;}.b{fill:#a7ecfb;}.c{fill:#fbb3cf;}.d{fill:#121212;}</style>
+ </defs>
+ <g transform="matrix(.59615 0 0 .59615 0 620)">
+  <path class="a" transform="translate(-45.483,-45.484)" d="m60-863.87h232.26v-116.13h-232.26z"/>
+  <path class="a" transform="translate(-212.26 -409.35)" d="m280-470.97h38.71v-29.033h-38.71z"/>
+  <path class="b" transform="translate(-212.26 -318.39)" d="m280-590.97h38.71v-29.033h-38.71z"/>
+  <g transform="translate(106.45 -909.35)">
+   <path class="c" transform="translate(320,240)" d="m-242.58-181.93v-29.033h-77.421v29.033zm-38.71-29.033h38.71v-29.033h-77.421v29.033z"/>
+  </g>
+  <g transform="translate(106.45 -967.42)">
+   <path class="d" transform="translate(320,240)" d="m-242.58-181.93v-58.066h-77.421v58.066z"/>
+  </g>
+  <g transform="translate(0,-1040)">
+   <path class="c" transform="translate(60)" d="m-45.484 0-14.516 14.516h14.516z"/>
+  </g>
+  <g transform="translate(58.066,-880.32)">
+   <path class="b" transform="translate(40,40)" d="m-30.322-30.322v-9.678h-9.678z"/>
+  </g>
+  <g transform="translate(183.87 -851.29)">
+   <path class="a" d="m0 0v62.9l62.9-62.9z"/>
+  </g>
+ </g>
+</svg>
