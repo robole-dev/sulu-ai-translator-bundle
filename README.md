@@ -42,7 +42,15 @@ return [
 ```yaml
 SuluAITranslatorBundle:
     resource: "@SuluAITranslatorBundle/Resources/config/routes_admin.yml"
+
+# Use the config below for Sulu 2.6.10+ as fos rest is deprecated
+# https://github.com/sulu/sulu/blob/2.6/UPGRADE-2.x.md#deprecate-usage-of-fos-rest-routing 
+SuluAITranslatorBundle:
+    resource: "@SuluAITranslatorBundle/Resources/config/routes_admin.yaml"
+    prefix: /admin/api
+
 ```
+
 
 3. Add the file `config/packages/sulu_ai_translator.yaml` with the following configuration:
 
