@@ -2,13 +2,11 @@
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
-
     <services>
-
         <service id="Robole\SuluAITranslatorBundle\Controller\Admin\TranslationController"
             public="true">
             <argument type="service" id="ai_translator.deepl_service" />
-            <argument type="service" id="fos_rest.view_handler.default" />
+            <argument type="service" id="sulu_security.security_checker" />
             <argument>%sulu_ai_translator.locale_mapping%</argument>
 
             <tag name="sulu.context" context="admin" />
