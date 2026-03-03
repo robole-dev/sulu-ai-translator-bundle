@@ -7,25 +7,32 @@
 </div>
 
 ![GitHub release](https://flat.badgen.net/github/release/robole-dev/sulu-ai-translator-bundle)
-![Supports Sulu 2.6 or later](https://flat.badgen.net/badge/Sulu/2.6/52B5C9?icon=php)
+![Supports Sulu 3.0 or later](https://flat.badgen.net/badge/Sulu/3.0/52B5C9?icon=php)
 
 ![Demonstration of content field translation](demo.gif)
 
 ## Features
 
--   DeepLService to fetch translations and usage statistics from DeepL API
--   "Usage statistics" admin view with permission
--   Translation button next to input fields
--   Toolbar button to bulk translate all fields (currently only for pages, snippets and forms)
+- DeepLService to fetch translations and usage statistics from DeepL API
+- "Usage statistics" admin view with permission
+- Translation button next to input fields
+- Toolbar button to bulk translate all fields on page, snippet and article edit views
+- Supports Sulu 3
 
 ## Installation
 
-This bundle requires PHP 8.2. Make sure to have installed [Node 18](https://nodejs.org/en/) (or Node 14 for Sulu versions <2.6.0) for building the Sulu administration UI.
+This bundle requires PHP 8.2 or later. Make sure to have installed [Node 18](https://nodejs.org/en/) or later for building the Sulu administration UI.
 
 1. Open a command console, enter your project directory and run:
 
 ```console
 composer require robole/sulu-ai-translator-bundle
+```
+
+**⚠️ Sulu 2.6** users please install the v1.1 branch:
+
+```console
+composer require robole/sulu-ai-translator-bundle:^1.1
 ```
 
 If you're **not** using Symfony Flex, you'll also need to add the bundle in your `config/bundles.php` file:
@@ -37,11 +44,12 @@ return [
 ];
 ```
 
-2. Register the new routes by adding the following to your `routes_admin.yaml`:
+2. Register the new routes by adding the following to your `config/routes/sulu_admin.yaml`:
 
 ```yaml
-SuluAITranslatorBundle:
-    resource: "@SuluAITranslatorBundle/Resources/config/routes_admin.yml"
+sulu_ai_translator:
+    resource: "@SuluAITranslatorBundle/Resources/config/routes_admin.yaml"
+    prefix: /admin/api
 ```
 
 3. Add the file `config/packages/sulu_ai_translator.yaml` with the following configuration:
@@ -87,9 +95,9 @@ DEEPL_API_KEY="..."
 
 ## Limitations
 
--   Currently only supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
--   Translations are applied on the frontend, giving content creators the ability to check translation quality and undo changes
--   Links to internal pages within text fields have to be updated by hand (obviously)
+- Currently only supports fields of type `input[type="text"]`, `textarea` and `<CkEditor />`
+- Translations are applied on the frontend, giving content creators the ability to check translation quality and undo changes
+- Links to internal pages within text fields have to be updated by hand (obviously)
 
 ### Local development
 
@@ -108,16 +116,24 @@ DEEPL_API_KEY="..."
 
 > composer require robole/sulu-ai-translator-bundle:@dev
 
+3. Check the coding standards:
+
+> composer php-cs
+
+4. Apply coding standards:
+
+> composer php-cs-fix
+
 ### Troubleshooting
 
 If a translation request returns the input text, it is very likely that the language key(s) defined in your `locale_mapping` bundle configuration are not [supported by DeepL](https://developers.deepl.com/docs/resources/supported-languages#target-languages). This will be indicated in the response object.
 
 ### Ideas for next versions
 
--   Add Symfony Recipe for quicker installation of bundle.
--   Replace `document.querySelector` with store-based approach for toggling blocks.
--   Enable configuration of translation strictness for each language (e.g. formal, informal, etc.)
--   Add a dropdown popup next to translation button for overwriting source and target language of a field
+- Add Symfony Recipe for quicker installation of bundle.
+- Replace `document.querySelector` with store-based approach for toggling blocks.
+- Enable configuration of translation strictness for each language (e.g. formal, informal, etc.)
+- Add a dropdown popup next to translation button for overwriting source and target language of a field
 
 ### Disclaimer
 
