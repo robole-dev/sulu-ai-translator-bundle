@@ -1,0 +1,13 @@
+{
+    "app.translation_config": "Překladač DeepL",
+    "app.translator_config_headline": "Statistiky používání DeepL",
+    "app.translator_config_usage_statistics": "Využito {characterCount} znaků z měsíčního limitu {characterLimit} znaků.",
+    "app.translator_config_deepl_dashboard": "Spravovat DeepL účet",
+    "app.translator_refresh_statistics": "Aktualizovat statistiky použití",
+    "app.translator_bulk_translate": "Přeložit",
+    "app.translator_bulk_translate_dialog_title": "Chcete přeložit všechna pole?",
+    "app.translator_bulk_translate_dialog_text": "Tato akce přeloží všechna pole do cílového jazyka. Tento proces může zabrat u většího počtu obsahu dlouhou dobu. Chcete pokračovat?",
+    "app.translator_error": "Překlad nelze načíst. Prosím zkontrolujte své připojení k internetu a zkuste to znovu.",
+    "app.translator_translate": "Kliknutím přeložíte pole do cílového jazyka",
+    "app.translator_undo_translation": "Kliknutím vrátíte zpět původní text"
+}
