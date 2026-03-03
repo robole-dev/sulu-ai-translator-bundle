@@ -4,15 +4,15 @@
     "type": "symfony-bundle",
     "require": {
         "php": "^8.2",
-        "sulu/sulu": "^2.5",
-        "symfony/config": "^6.2 | ^7.0",
-        "symfony/dependency-injection": "^6.2 | ^7.0",
-        "symfony/framework-bundle": "^6.2 | ^7.0",
-        "symfony/http-foundation": "^6.2 | ^7.0",
-        "symfony/http-kernel": "^6.2 | ^7.0",
-        "symfony/intl": "^6.2 | ^7.0",
-        "symfony/translation": "^6.2 | ^7.0",
-        "symfony/security-core": "^6.3 | ^7.0",
+        "sulu/sulu": "^3.0",
+        "symfony/config": "^7.4",
+        "symfony/dependency-injection": "^7.4",
+        "symfony/framework-bundle": "^7.4",
+        "symfony/http-foundation": "^7.4",
+        "symfony/http-kernel": "^7.4",
+        "symfony/intl": "^7.4",
+        "symfony/translation": "^7.4",
+        "symfony/security-core": "^7.4",
         "deeplcom/deepl-php": "^1.7"
     },
     "homepage": "https://github.com/robole-dev/sulu-ai-translator-bundle",
@@ -24,8 +24,8 @@
     },
     "authors": [
         {
-            "name": "falbroscheit",
-            "email": "felix.albroscheit@robole.de"
+            "name": "Felix Sänger",
+            "email": "felix.saenger@robole.de"
         }
     ],
     "config": {
@@ -33,5 +33,12 @@
             "symfony/flex": true,
             "php-http/discovery": true
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.94"
+    },
+    "scripts": {
+        "php-cs": "@php vendor/bin/php-cs-fixer fix --verbose --diff --dry-run",
+        "php-cs-fix": "@php vendor/bin/php-cs-fixer fix"
     }
 }
