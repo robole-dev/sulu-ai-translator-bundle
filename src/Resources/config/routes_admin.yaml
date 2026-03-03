@@ -1,0 +1,13 @@
+app.get_translate_usage:
+    path: "/translate/usage"
+    methods: GET
+    controller: 'Robole\SuluAITranslatorBundle\Controller\Admin\TranslationController::getTranslateUsageAction'
+    format: json
+    requirements: { _format: json|csv }
+
+app.post_translate:
+    path: "/translates"
+    methods: POST
+    controller: 'Robole\SuluAITranslatorBundle\Controller\Admin\TranslationController::postTranslateAction'
+    format: json
+    requirements: { _format: json|csv }

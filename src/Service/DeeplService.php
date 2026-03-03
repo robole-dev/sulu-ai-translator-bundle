@@ -14,7 +14,7 @@ class DeeplService
         $this->client = new Translator($this->deeplApiKey);
     }
 
-    public function translateText(string $text, string $source = null, string $target, ?array $options = []): object
+    public function translateText(string $text, ?string $source = null, string $target, ?array $options = []): object
     {
         return $this->client->translateText($text, $source, $target, $options);
     }
