@@ -23,7 +23,8 @@ class AITranslatorAdmin extends Admin
 
     public const TRANSLATION_CONFIG_VIEW = 'ai_translator.config'; // Key of TranslatorConfigView.js as registered in app.js
 
-    public const SULU_ARTICLE_EDIT_VIEW = 'sulu_article.article.edit_tabs_default.content'; // @todo target group: https://github.com/sulu/sulu/blob/3.0/packages/article/src/Infrastructure/Sulu/Admin/ArticleAdmin.php#L128
+    public const SULU_ARTICLE_EDIT_VIEW = 'sulu_article.article.edit_tabs_default.content';
+    public const SULU_ARTICLE_EDIT_VIEW_PATTERN = '/^sulu_article\.article\.edit_tabs_.+\.content$/'; // one view per article group
     public const SULU_PAGE_EDIT_VIEW = 'sulu_page.page_edit_form.content';
     public const SULU_SNIPPET_EDIT_VIEW = 'sulu_snippet.snippet.edit_tabs.content';
 
@@ -31,6 +32,16 @@ class AITranslatorAdmin extends Admin
         private readonly ViewBuilderFactoryInterface $viewBuilderFactory,
         private readonly SecurityCheckerInterface $securityChecker
     ) {
+    }
+
+    /**
+     * Sulu sorts the admins by priority (tagged_iterator('sulu.admin', defaultPriorityMethod: 'getPriority')).
+     * With the default priority 0 it depends on the load order whether the views of other bundles already
+     * exist in configureViews(). A low priority makes this admin run after all others.
+     */
+    public static function getPriority(): int
+    {
+        return -1024;
     }
 
     public function configureNavigationItems(NavigationItemCollection $navigationItemCollection): void
@@ -103,15 +114,20 @@ class AITranslatorAdmin extends Admin
 
     private function addArticleEditToolbarAction(ViewCollection $viewCollection): void
     {
-        try {
-            $articleEditView = $viewCollection->get(self::SULU_ARTICLE_EDIT_VIEW);
-            $articleEditView->setOption('toolbarActions', [
-                ...$articleEditView->getView()->getOption('toolbarActions'),
-                new ToolbarAction('ai_translator.toolbar')
-            ]);
-            $viewCollection->add($articleEditView);
-        } catch (\Exception) {
-            // View not available
+        foreach ($viewCollection->all() as $viewName => $articleEditView) {
+            if (!preg_match(self::SULU_ARTICLE_EDIT_VIEW_PATTERN, (string) $viewName)) {
+                continue;
+            }
+
+            try {
+                $articleEditView->setOption('toolbarActions', [
+                    ...$articleEditView->getView()->getOption('toolbarActions'),
+                    new ToolbarAction('ai_translator.toolbar')
+                ]);
+                $viewCollection->add($articleEditView);
+            } catch (\Exception) {
+                // View not available
+            }
         }
     }
 
