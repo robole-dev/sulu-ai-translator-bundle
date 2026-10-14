@@ -52,6 +52,10 @@ export default class AITranslatorToolbarAction extends AbstractListToolbarAction
     }
 
     getToolbarItemConfig() {
+        // The toolbar uses the index of an item as key. When the tab is switched, the button can end up in a
+        // DOM element that React reuses, and then buttonRef is not called. Look for the button after rendering.
+        window.requestAnimationFrame(() => this.findButton());
+
         return {
             type: "button",
             label: translate("app.translator_bulk_translate"),
@@ -59,11 +63,30 @@ export default class AITranslatorToolbarAction extends AbstractListToolbarAction
             disabled: false,
             showText: true,
             onClick: this.handleToolbarButtonClick.bind(this),
-            buttonRef: (ref) => {
-                this.buttonRef = ref;
-                this.buttonRef.classList.add("translator__bulk-btn");
-            },
+            buttonRef: (ref) => this.setButton(ref),
         };
+    }
+
+    findButton() {
+        const button = [
+            ...document.querySelectorAll("button:not(.translator__btn)"),
+        ].find((element) => element.querySelector("[class*='su-language']"));
+
+        if (button && button !== this.buttonRef) {
+            this.setButton(button);
+        }
+    }
+
+    setButton(button) {
+        // A reused element can still carry the class of the item it was used for before
+        document.querySelectorAll(".translator__bulk-btn").forEach((element) => {
+            if (element !== button) {
+                element.classList.remove("translator__bulk-btn");
+            }
+        });
+
+        this.buttonRef = button;
+        this.buttonRef.classList.add("translator__bulk-btn");
     }
 
     updateState(activeItemsLength, totalItemsLength) {

@@ -6,6 +6,7 @@ namespace Robole\SuluAITranslatorBundle\Controller\Admin;
 
 use Robole\SuluAITranslatorBundle\Admin\AITranslatorAdmin;
 use Robole\SuluAITranslatorBundle\Service\DeeplService;
+use Robole\SuluAITranslatorBundle\Service\TranslationPermissionChecker;
 use Sulu\Component\Security\Authorization\PermissionTypes;
 use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +20,7 @@ class TranslationController extends AbstractController
     public function __construct(
         private readonly DeeplService $deeplService,
         private readonly SecurityCheckerInterface $securityChecker,
+        private readonly TranslationPermissionChecker $permissionChecker,
         private array $localeMapping
     ) {}
 
@@ -58,6 +60,11 @@ class TranslationController extends AbstractController
      */
     public function postTranslateAction(Request $request)
     {
+        // The resource key is sent by the client, see the README section "Permissions"
+        if (!$this->permissionChecker->isAllowed($request->request->get('resourceKey'))) {
+            throw new AccessDeniedException();
+        }
+
         $text = $request->request->get('text');
 
         if (!$text || empty($text)) {

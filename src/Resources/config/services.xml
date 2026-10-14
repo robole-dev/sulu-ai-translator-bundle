@@ -3,11 +3,21 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        <service id="ai_translator.translation_permission_checker"
+            class="Robole\SuluAITranslatorBundle\Service\TranslationPermissionChecker">
+            <argument type="service" id="sulu_security.security_checker" />
+            <argument>%sulu_ai_translator.permissions.enabled%</argument>
+            <argument>%sulu_ai_translator.permissions.areas%</argument>
+        </service>
+
         <service id="ai_translator.admin"
             class="Robole\SuluAITranslatorBundle\Admin\AITranslatorAdmin">
             <argument type="service" id="sulu_admin.view_builder_factory" />
             <argument type="service" id="sulu_security.security_checker" />
-            <argument>%sulu_admin.name%</argument>
+            <argument type="service" id="ai_translator.translation_permission_checker" />
+            <argument>%sulu_ai_translator.toolbar.auto_attach%</argument>
+            <argument>%sulu_ai_translator.toolbar.views%</argument>
+            <argument>%sulu_ai_translator.toolbar.exclude%</argument>
 
             <tag name="sulu.admin" />
             <tag name="sulu.context" context="admin" />

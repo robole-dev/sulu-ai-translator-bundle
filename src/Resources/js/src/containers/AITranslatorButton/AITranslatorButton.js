@@ -72,6 +72,7 @@ class AITranslatorButton extends React.Component {
             text: value,
             source: null,
             target: this.activeLocale,
+            resourceKey: this.props.formInspector.resourceKey,
         })
             .then(
                 action((response) => {

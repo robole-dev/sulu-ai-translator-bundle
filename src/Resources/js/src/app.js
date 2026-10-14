@@ -9,6 +9,7 @@ import {
     AITranslatorToolbarAction,
     withAITranslatorButton,
 } from "./containers";
+import { setPermissionConfig } from "./permissions";
 
 // @todo Submit sulu/sulu PR: Field registry should export these constants
 const FIELD_TYPE_TEXT_LINE = "text_line";
@@ -16,6 +17,10 @@ const FIELD_TYPE_TEXT_AREA = "text_area";
 const FIELD_TYPE_TEXT_EDITOR = "text_editor";
 
 const TRANSLATION_CONFIG_VIEW = "ai_translator.config";
+
+initializer.addUpdateConfigHook("sulu_ai_translator", (config) => {
+    setPermissionConfig(config);
+});
 
 initializer.addUpdateConfigHook("sulu_admin", (config, initialized) => {
     if (!initialized) {

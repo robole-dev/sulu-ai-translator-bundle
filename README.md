@@ -16,7 +16,7 @@
 - DeepLService to fetch translations and usage statistics from DeepL API
 - "Usage statistics" admin view with permission
 - Translation button next to input fields
-- Toolbar button to bulk translate all fields on page, snippet and article edit views
+- Toolbar button to bulk translate all fields on page, snippet and article (all article groups) edit views. Every other localized form view with a save action gets the button as well, e.g. the views of your own content bundles (see [Toolbar button configuration](#toolbar-button-configuration))
 - Supports Sulu 3
 
 ## Installation
@@ -92,6 +92,61 @@ DEEPL_API_KEY="..."
 ```
 
 8. Grant permissions in Sulu backend to access "DeepL Usage Statistics" view.
+
+## Toolbar button configuration
+
+The bulk translate button is added to the toolbar of every view that
+
+- is a form view (`sulu_admin.form` or `sulu_admin.preview_form`),
+- is shown per locale (the view itself or its parent tab view has `locales`),
+- has a save toolbar action (`sulu_admin.save` or `sulu_admin.save_with_publishing`),
+- and does not match one of the `exclude` patterns (by default the settings tabs and the "add" forms).
+
+This covers pages, snippets, articles of all groups and the views of custom content bundles (e.g. built with Sulu's `ContentViewBuilderFactory`) without any code. All settings are optional, these are the defaults:
+
+```yaml
+sulu_ai_translator:
+    toolbar:
+        auto_attach: true       # false: only pages, snippets and articles plus "views"
+        views: []               # additional views that always get the button, without any check
+        exclude: ['*.settings', '*.add_tabs*', '*.add_form*'] # fnmatch patterns of view names that never get the button automatically
+```
+
+Two rules apply on top of that, also to pages, snippets and articles:
+
+- The page tabs "Content", "SEO" and "Excerpt" always get the button. They are listed explicitly because pages do not meet the criteria above (the locales come from the webspace and the save action is part of a dropdown).
+- A view whose `resourceKey` differs from the `resourceKey` of its parent view (e.g. the settings tab of a language independent entity inside localized article tabs) does not get the button automatically, because translating it would overwrite the data of all languages. Add it to `views` if you want it anyway.
+
+Example for a view that does not meet the criteria above, and for a view that should not get the button:
+
+```yaml
+sulu_ai_translator:
+    toolbar:
+        views: ['app.custom_form.details']
+        exclude: ['*.settings', '*.add_tabs*', '*.add_form*', 'sulu_media.*']
+```
+
+Note that setting `exclude` replaces the default, so keep the default patterns in the list if you still want them. To add the button to the "add" forms, remove `'*.add_tabs*'` and `'*.add_form*'`.
+
+## Permissions
+
+By default everyone who can edit a form may translate in it. To restrict this to certain roles, enable the permissions:
+
+```yaml
+sulu_ai_translator:
+    permissions:
+        enabled: false                       # true: only roles with the permission of an area may translate there
+        areas: [pages, articles, snippets]   # resource keys with their own permission, all others share the area "other"
+```
+
+With `enabled: true` the permission group "AI Translator" in *Settings > User roles* gets one row per area plus the row `other` (column "Edit"). An area is the resource key of the form (`pages`, `articles`, `snippets`, `events`, ...). Pages, snippets and articles of all groups are listed by default; forms of other resources (e.g. your own content bundles, media, categories) fall under `other` unless you add their resource key to `areas`.
+
+Without the permission of its area the user gets neither the toolbar button nor the buttons at the fields, and the translation endpoint answers with 403. The existing permission for the usage statistics is not affected.
+
+Note:
+
+- After enabling the permissions nobody may translate until the roles are updated, so set the roles first or right after the update.
+- The resource key is sent by the browser. A user who may translate in any area could therefore have text of another area translated by calling the endpoint directly. This only uses translation quota, nothing is saved (saving is protected by the regular Sulu permissions).
 
 ## Limitations
 
