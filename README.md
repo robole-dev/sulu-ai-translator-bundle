@@ -16,7 +16,7 @@
 - DeepLService to fetch translations and usage statistics from DeepL API
 - "Usage statistics" admin view with permission
 - Translation button next to input fields
-- Toolbar button to bulk translate all fields on page, snippet and article edit views
+- Toolbar button to bulk translate all fields on page, snippet and article (all article groups) edit views. Every other localized form view with a save action gets the button as well, e.g. the views of your own content bundles (see [Toolbar button configuration](#toolbar-button-configuration))
 - Supports Sulu 3
 
 ## Installation
@@ -92,6 +92,41 @@ DEEPL_API_KEY="..."
 ```
 
 8. Grant permissions in Sulu backend to access "DeepL Usage Statistics" view.
+
+## Toolbar button configuration
+
+The bulk translate button is added to the toolbar of every view that
+
+- is a form view (`sulu_admin.form` or `sulu_admin.preview_form`),
+- is shown per locale (the view itself or its parent tab view has `locales`),
+- has a save toolbar action (`sulu_admin.save` or `sulu_admin.save_with_publishing`),
+- and does not match one of the `exclude` patterns (by default the settings tabs and the "add" forms).
+
+This covers pages, snippets, articles of all groups and the views of custom content bundles (e.g. built with Sulu's `ContentViewBuilderFactory`) without any code. All settings are optional, these are the defaults:
+
+```yaml
+sulu_ai_translator:
+    toolbar:
+        auto_attach: true       # false: only pages, snippets and articles plus "views"
+        views: []               # additional views that always get the button, without any check
+        exclude: ['*.settings', '*.add_tabs*', '*.add_form*'] # fnmatch patterns of view names that never get the button automatically
+```
+
+Two rules apply on top of that, also to pages, snippets and articles:
+
+- The page tabs "Content", "SEO" and "Excerpt" always get the button. They are listed explicitly because pages do not meet the criteria above (the locales come from the webspace and the save action is part of a dropdown).
+- A view whose `resourceKey` differs from the `resourceKey` of its parent view (e.g. the settings tab of a language independent entity inside localized article tabs) does not get the button automatically, because translating it would overwrite the data of all languages. Add it to `views` if you want it anyway.
+
+Example for a view that does not meet the criteria above, and for a view that should not get the button:
+
+```yaml
+sulu_ai_translator:
+    toolbar:
+        views: ['app.custom_form.details']
+        exclude: ['*.settings', '*.add_tabs*', '*.add_form*', 'sulu_media.*']
+```
+
+Note that setting `exclude` replaces the default, so keep the default patterns in the list if you still want them. To add the button to the "add" forms, remove `'*.add_tabs*'` and `'*.add_form*'`.
 
 ## Limitations
 

@@ -21,6 +21,9 @@ class SuluAITranslatorExtension extends Extension
 
         $container->setParameter('sulu_ai_translator.deepl_api_key', $config['deepl_api_key'] ?? '');
         $container->setParameter('sulu_ai_translator.locale_mapping', $config['locale_mapping'] ?? []);
+        $container->setParameter('sulu_ai_translator.toolbar.auto_attach', $config['toolbar']['auto_attach']);
+        $container->setParameter('sulu_ai_translator.toolbar.views', $config['toolbar']['views']);
+        $container->setParameter('sulu_ai_translator.toolbar.exclude', $config['toolbar']['exclude']);
 
         /**
          * @deprecated Migrate to PHP config files
