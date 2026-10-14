@@ -17,7 +17,7 @@
 - "Usage statistics" admin view with permission
 - Translation button next to input fields
 - Toolbar button to bulk translate all fields on page, snippet and article edit views
-- Supports Sulu 3
+- Supports Sulu 3 on Symfony 7.4 and 8
 
 ## Installation
 
