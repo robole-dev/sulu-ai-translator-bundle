@@ -5,6 +5,7 @@
     "app.translator_config_deepl_dashboard": "Spravovat DeepL účet",
     "app.translator_refresh_statistics": "Aktualizovat statistiky použití",
     "app.translator_bulk_translate": "Přeložit",
+    "app.translator_bulk_translated": "Přeloženo: {done}/{total}",
     "app.translator_bulk_translate_dialog_title": "Chcete přeložit všechna pole?",
     "app.translator_bulk_translate_dialog_text": "Tato akce přeloží všechna pole do cílového jazyka. Tento proces může zabrat u většího počtu obsahu dlouhou dobu. Chcete pokračovat?",
     "app.translator_error": "Překlad nelze načíst. Prosím zkontrolujte své připojení k internetu a zkuste to znovu.",
